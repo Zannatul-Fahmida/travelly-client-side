@@ -1,0 +1,10 @@
+.banner-bg{
+    height: 100vh;
+    background-image: url('../../../images/flat-lay-yellow-background-with-hat-toy-plane-min.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.banner-text-bg{
+    background-color: rgba(255, 255, 255, 0.712);
+}

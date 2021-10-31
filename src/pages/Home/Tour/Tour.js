@@ -16,7 +16,7 @@ const Tour = (props) => {
                     </Link>
                 </Card.Body>
             </Card>
-        </Col >
+        </Col>
     );
 };
 

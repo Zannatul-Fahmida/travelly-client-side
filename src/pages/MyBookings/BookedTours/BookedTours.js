@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, Col, Button } from 'react-bootstrap';
 
 const BookedTours = (props) => {
-    const {tourImg, tourName, tourPrice, _id} = props.booked;   
+    const {tourImg, tourName, tourPrice, _id, status} = props.booked;   
     const [bookings, setBookings] = useState([]);
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure you want to delete?');
@@ -28,6 +28,7 @@ const BookedTours = (props) => {
                 <Card.Body>
                     <Card.Title>{tourName}</Card.Title>
                     <Card.Text className="text-secondary">$ {tourPrice}</Card.Text>
+                    <Card.Text className="text-secondary">{status}</Card.Text>
                     <Button variant="danger" onClick={()=>handleDelete(_id)}>Cancel Booking</Button>
                 </Card.Body>
             </Card>

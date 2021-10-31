@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Card, Col, Button } from 'react-bootstrap';
 
 const AllBooked = (props) => {
-    const { tourImg, tourName, name, email, tourPrice, _id } = props.booked;
-    const [status, setStatus] = useState('Pending');
+    const { tourImg, tourName, name, email, tourPrice, _id, status } = props.booked;
     const [bookings, setBookings] = useState([]);
+    const [updatedBooking, setUpdatedBooking] = useState([]);
 
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure you want to delete?');
@@ -23,6 +23,28 @@ const AllBooked = (props) => {
                 })
         }
     }
+
+    const handleUpdateStatus = id => {
+        const url = `https://limitless-brook-90009.herokuapp.com/booking/${id}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedBooking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    alert('Updated successfully');
+                    window.location.reload();
+                    const updatedStatus= 'Approved';
+                    const updatedBooking = { status: updatedStatus };
+                    setUpdatedBooking(updatedBooking);
+                    console.log(updatedBooking);
+                }
+            })
+    }
     return (
         <Col>
             <Card className="shadow h-100">
@@ -32,8 +54,9 @@ const AllBooked = (props) => {
                     <Card.Text className="text-secondary">$ {tourPrice}</Card.Text>
                     <Card.Text className="text-secondary">User Name: {name}</Card.Text>
                     <Card.Text className="text-secondary">User Email: {email}</Card.Text>
+                    <Card.Text className="text-secondary">{status}</Card.Text>
                     <div className="d-flex justify-content-evenly">
-                        <Button variant="success" onClick={() => setStatus('Approved')}>{status}</Button>
+                        <Button variant="success" onClick={() => handleUpdateStatus(_id)}>Status</Button>
                         <Button variant="danger" onClick={() => handleDelete(_id)}>Cancel Booking</Button>
                     </div>
                 </Card.Body>

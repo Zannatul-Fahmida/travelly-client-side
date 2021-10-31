@@ -22,6 +22,7 @@ const PlaceOrder = () => {
         e.preventDefault();
     }
     const handleBooking = booking => {
+        const status = 'Pending';
         const tourId= booking._id;
         const tourName= booking.name;
         const tourImg= booking.img;
@@ -29,7 +30,7 @@ const PlaceOrder = () => {
         const tourShortDescription= booking.short_description;
         const name = nameRef.current.value;
         const email = emailRef.current.value;
-        const data = { tourId, tourName, tourImg, tourPrice, tourShortDescription, name, email };
+        const data = { tourId, tourName, tourImg, tourPrice, tourShortDescription, name, email, status };
         fetch(`https://limitless-brook-90009.herokuapp.com/addBooking`, {
             method: "POST",
             headers: { "content-type": "application/json" },

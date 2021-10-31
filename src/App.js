@@ -10,7 +10,7 @@ import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
 import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
 import AddNewTour from './pages/AddNewTour/AddNewTour';
 import AllBookings from './pages/AllBookings/AllBookings/AllBookings';
-import MyBookings from './MyBookings/MyBookings/MyBookings';
+import MyBookings from './pages/MyBookings/MyBookings/MyBookings';
 
 function App() {
   return (

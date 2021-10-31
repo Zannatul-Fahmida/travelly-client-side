@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import useAuth from '../../hooks/useAuth';
 import { Container, Row} from 'react-bootstrap';
+import useAuth from '../../../hooks/useAuth';
 import BookedTours from '../BookedTours/BookedTours';
 
 const MyBookings = () => {
